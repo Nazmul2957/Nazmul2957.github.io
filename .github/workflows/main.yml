@@ -113,4 +113,10 @@ jobs:
           tag: v1.0.${{ github.run_number }}      # auto version tag
           token: ${{ secrets.GITHUB_TOKEN }}      # built-in GitHub token
 
-
+      # Step 7: Deploy to GitHub Pages
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build/web
+          publish_branch: gh-pages
