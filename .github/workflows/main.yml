@@ -111,6 +111,6 @@ jobs:
         with:
           artifacts: "web-build.zip"              # file to upload
           tag: v1.0.${{ github.run_number }}      # auto version tag
-          token: ${{ secrets.TOKEN }}      # built-in GitHub token
+          token: ${{ secrets.GITHUB_TOKEN }}      # built-in GitHub token
 
 
