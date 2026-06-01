@@ -25,8 +25,16 @@ class ExperienceSection extends StatelessWidget {
               _buildExperienceItem(
                 context,
                 title: 'Software Engineer',
+                company: 'Ambala IT, Shyamoli, Dhaka',
+                period: 'June 2026 - Present',
+                description:
+                    'Developing and maintaining mobile applications, implementing state management solutions, optimizing performance, and ensuring a seamless, high-quality user experience across platforms.',
+              ),
+              _buildExperienceItem(
+                context,
+                title: 'Software Engineer',
                 company: 'Akij Venture Ltd, Gulshan1, Dhaka',
-                period: 'January 2024 - Present',
+                period: 'January 2024 - June 2026',
                 description:
                     'Developed and maintained multiple enterprise and e-commerce applications including Fair Value, Electronics Warranty Checker, HRIS, RTM, and Market Auditor. Specialized in Flutter, Dart, REST API, GetX, Provider, and Clean Architecture.',
               ),
