@@ -36,7 +36,7 @@ class ExperienceSection extends StatelessWidget {
                 company: 'Akij Venture Ltd, Gulshan1, Dhaka',
                 period: 'January 2024 - June 2026',
                 description:
-                    'Developed and maintained multiple enterprise and e-commerce applications including Fair Value, Electronics Warranty Checker, HRIS, RTM, and Market Auditor. Specialized in Flutter, Dart, REST API, GetX, Provider, and Clean Architecture.',
+                    'Developed and maintained multiple enterprise and e-commerce applications including Metro Mart, Electronics Warranty Checker, HRIS, RTM, and Market Auditor. Specialized in Flutter, Dart, REST API, GetX, Provider, and Clean Architecture.',
               ),
               _buildExperienceItem(
                 context,

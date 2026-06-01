@@ -40,10 +40,11 @@ class ProjectsSection extends StatelessWidget {
                 children: [
                   _buildProjectCard(
                     context,
-                    title: 'Fair Value',
+                    title: 'Metro Mart',
                     description: 'A cross-platform e-commerce application for product browsing, secure online payments, and scalable API integration.',
                     technologies: ['Flutter', 'Dart', 'GetX', 'MVVM', 'Payment Gateway'],
                     link: 'https://play.google.com/store/apps/details?id=com.fairvalue.nl.app',
+                    imageUrl: 'https://play-lh.googleusercontent.com/DC06rYyEvM9Dl2M2lLMIhpGr4eYHEffQnz4XxvKs0ahGpasuIIa52l7wWOE4vghyVOWLahYf8B0UDiwOYm42Fg',
                   ),
                   _buildProjectCard(
                     context,
@@ -91,6 +92,7 @@ class ProjectsSection extends StatelessWidget {
     required String description,
     required List<String> technologies,
     String? link,
+    String? imageUrl,
   }) {
     return Container(
       padding: const EdgeInsets.all(24),
@@ -105,7 +107,23 @@ class ProjectsSection extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Icon(Icons.folder_open, size: 40, color: AppTheme.primaryColor),
+              if (imageUrl != null)
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(8),
+                  child: Image.network(
+                    imageUrl,
+                    width: 40,
+                    height: 40,
+                    fit: BoxFit.cover,
+                    errorBuilder: (context, error, stackTrace) => const Icon(
+                      Icons.folder_open,
+                      size: 40,
+                      color: AppTheme.primaryColor,
+                    ),
+                  ),
+                )
+              else
+                const Icon(Icons.folder_open, size: 40, color: AppTheme.primaryColor),
               if (link != null)
                 IconButton(
                   icon: const Icon(Icons.open_in_new, color: AppTheme.textSecondary),
@@ -130,6 +148,21 @@ class ProjectsSection extends StatelessWidget {
               style: Theme.of(context).textTheme.bodyMedium,
             ),
           ),
+          if (imageUrl != null) ...[
+            const SizedBox(height: 12),
+            Center(
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(12),
+                child: Image.network(
+                  imageUrl,
+                  height: 64,
+                  width: 64,
+                  fit: BoxFit.cover,
+                  errorBuilder: (context, error, stackTrace) => const SizedBox(),
+                ),
+              ),
+            ),
+          ],
           const SizedBox(height: 16),
           Wrap(
             spacing: 8,
