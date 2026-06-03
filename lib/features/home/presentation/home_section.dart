@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_builder/responsive_builder.dart';
-import '../../../core/theme/app_theme.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class HomeSection extends StatelessWidget {
@@ -19,7 +18,7 @@ class HomeSection extends StatelessWidget {
             Text(
               'Hi, I am',
               style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                    color: AppTheme.primaryColor,
+                    color: Theme.of(context).primaryColor,
                   ),
             ),
             const SizedBox(height: 16),
@@ -34,10 +33,10 @@ class HomeSection extends StatelessWidget {
               'Flutter Developer',
               style: isMobile
                   ? Theme.of(context).textTheme.headlineMedium?.copyWith(
-                        color: AppTheme.textSecondary,
+                        color: Theme.of(context).textTheme.bodyMedium?.color,
                       )
                   : Theme.of(context).textTheme.displayMedium?.copyWith(
-                        color: AppTheme.textSecondary,
+                        color: Theme.of(context).textTheme.bodyMedium?.color,
                       ),
             ),
             const SizedBox(height: 32),
@@ -82,12 +81,12 @@ class HomeSection extends StatelessWidget {
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               border: Border.all(
-                color: AppTheme.primaryColor,
+                color: Theme.of(context).primaryColor,
                 width: 4,
               ),
               boxShadow: [
                 BoxShadow(
-                  color: AppTheme.primaryColor.withOpacity(0.2),
+                  color: Theme.of(context).primaryColor.withOpacity(0.2),
                   blurRadius: 20,
                   spreadRadius: 5,
                 ),

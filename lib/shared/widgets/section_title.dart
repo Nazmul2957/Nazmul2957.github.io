@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../../core/theme/app_theme.dart';
 
 class SectionTitle extends StatelessWidget {
   final String title;
@@ -14,7 +13,7 @@ class SectionTitle extends StatelessWidget {
         Text(
           title,
           style: Theme.of(context).textTheme.headlineLarge?.copyWith(
-                color: AppTheme.primaryColor,
+                color: Theme.of(context).primaryColor,
               ),
         ),
         const SizedBox(height: 8),
@@ -22,7 +21,7 @@ class SectionTitle extends StatelessWidget {
           height: 4,
           width: 60,
           decoration: BoxDecoration(
-            color: AppTheme.secondaryColor,
+            color: Theme.of(context).colorScheme.secondary,
             borderRadius: BorderRadius.circular(2),
           ),
         ),

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_builder/responsive_builder.dart';
-import '../../../core/theme/app_theme.dart';
 import '../../../shared/widgets/section_title.dart';
 
 class AboutSection extends StatelessWidget {
@@ -147,7 +146,7 @@ class AboutSection extends StatelessWidget {
         Text(
           subtitle,
           style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                color: AppTheme.primaryColor,
+                color: Theme.of(context).primaryColor,
               ),
         ),
         const SizedBox(height: 4),
@@ -170,9 +169,9 @@ class AboutSection extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-        color: AppTheme.surfaceColor,
+        color: Theme.of(context).colorScheme.surface,
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: Colors.white.withOpacity(0.05)),
+        border: Border.all(color: Theme.of(context).textTheme.bodyLarge?.color?.withOpacity(0.05) ?? Colors.black12),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -193,7 +192,7 @@ class AboutSection extends StatelessWidget {
           const SizedBox(height: 8),
           Row(
             children: [
-              const Icon(Icons.email, size: 16, color: AppTheme.textSecondary),
+              Icon(Icons.email, size: 16, color: Theme.of(context).textTheme.bodyMedium?.color),
               const SizedBox(width: 8),
               Text(
                 email,
@@ -204,7 +203,7 @@ class AboutSection extends StatelessWidget {
           const SizedBox(height: 4),
           Row(
             children: [
-              const Icon(Icons.phone, size: 16, color: AppTheme.textSecondary),
+              Icon(Icons.phone, size: 16, color: Theme.of(context).textTheme.bodyMedium?.color),
               const SizedBox(width: 8),
               Text(
                 phone,

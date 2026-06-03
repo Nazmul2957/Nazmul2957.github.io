@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_builder/responsive_builder.dart';
-import '../../../core/theme/app_theme.dart';
 import '../../../shared/widgets/section_title.dart';
 
 class SkillsSection extends StatelessWidget {
@@ -49,16 +48,16 @@ class SkillsSection extends StatelessWidget {
       width: 350,
       padding: const EdgeInsets.all(24),
       decoration: BoxDecoration(
-        color: AppTheme.surfaceColor,
+        color: Theme.of(context).colorScheme.surface,
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: Colors.white.withOpacity(0.05)),
+        border: Border.all(color: Theme.of(context).textTheme.bodyLarge?.color?.withOpacity(0.05) ?? Colors.black12),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
             children: [
-              const Icon(Icons.code, color: AppTheme.primaryColor),
+              Icon(Icons.code, color: Theme.of(context).primaryColor),
               const SizedBox(width: 8),
               Expanded(
                 child: Text(
@@ -76,14 +75,14 @@ class SkillsSection extends StatelessWidget {
               return Container(
                 padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                 decoration: BoxDecoration(
-                  color: AppTheme.primaryColor.withOpacity(0.1),
+                  color: Theme.of(context).primaryColor.withOpacity(0.1),
                   borderRadius: BorderRadius.circular(20),
-                  border: Border.all(color: AppTheme.primaryColor.withOpacity(0.2)),
+                  border: Border.all(color: Theme.of(context).primaryColor.withOpacity(0.2)),
                 ),
                 child: Text(
                   skill,
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                        color: AppTheme.primaryColor,
+                        color: Theme.of(context).primaryColor,
                         fontWeight: FontWeight.w500,
                       ),
                 ),

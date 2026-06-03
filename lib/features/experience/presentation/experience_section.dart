@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_builder/responsive_builder.dart';
-import '../../../core/theme/app_theme.dart';
 import '../../../shared/widgets/section_title.dart';
 
 class ExperienceSection extends StatelessWidget {
@@ -79,8 +78,8 @@ class ExperienceSection extends StatelessWidget {
               Container(
                 width: 16,
                 height: 16,
-                decoration: const BoxDecoration(
-                  color: AppTheme.primaryColor,
+                decoration: BoxDecoration(
+                  color: Theme.of(context).primaryColor,
                   shape: BoxShape.circle,
                 ),
               ),
@@ -88,7 +87,7 @@ class ExperienceSection extends StatelessWidget {
                 Expanded(
                   child: Container(
                     width: 2,
-                    color: AppTheme.primaryColor.withOpacity(0.3),
+                    color: Theme.of(context).primaryColor.withOpacity(0.3),
                   ),
                 ),
             ],
@@ -108,7 +107,7 @@ class ExperienceSection extends StatelessWidget {
                   Text(
                     company,
                     style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                          color: AppTheme.primaryColor,
+                          color: Theme.of(context).primaryColor,
                         ),
                   ),
                   const SizedBox(height: 4),

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:url_launcher/url_launcher.dart';
-import '../../../core/theme/app_theme.dart';
 
 class ContactSection extends StatelessWidget {
   const ContactSection({super.key});
@@ -24,16 +23,16 @@ class ContactSection extends StatelessWidget {
               Text(
                 'Get In Touch',
                 style: Theme.of(context).textTheme.headlineLarge?.copyWith(
-                      color: AppTheme.primaryColor,
+                      color: Theme.of(context).primaryColor,
                     ),
               ),
               const SizedBox(height: 16),
-              const SizedBox(
+              SizedBox(
                 width: 600,
                 child: Text(
                   'I am currently looking for new opportunities. Whether you have a question or just want to say hi, I will try my best to get back to you!',
                   textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 16, color: AppTheme.textSecondary),
+                  style: TextStyle(fontSize: 16, color: Theme.of(context).textTheme.bodyMedium?.color),
                 ),
               ),
               const SizedBox(height: 40),
@@ -107,13 +106,13 @@ class ContactSection extends StatelessWidget {
         width: 250,
         padding: const EdgeInsets.all(24),
         decoration: BoxDecoration(
-          color: AppTheme.surfaceColor,
+          color: Theme.of(context).colorScheme.surface,
           borderRadius: BorderRadius.circular(12),
-          border: Border.all(color: Colors.white.withOpacity(0.05)),
+          border: Border.all(color: Theme.of(context).textTheme.bodyLarge?.color?.withOpacity(0.05) ?? Colors.black12),
         ),
         child: Column(
           children: [
-            Icon(icon, size: 32, color: AppTheme.primaryColor),
+            Icon(icon, size: 32, color: Theme.of(context).primaryColor),
             const SizedBox(height: 16),
             Text(
               title,

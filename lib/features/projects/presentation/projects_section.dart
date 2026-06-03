@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:url_launcher/url_launcher.dart';
-import '../../../core/theme/app_theme.dart';
 import '../../../shared/widgets/section_title.dart';
 
 class ProjectsSection extends StatelessWidget {
@@ -97,9 +96,9 @@ class ProjectsSection extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(24),
       decoration: BoxDecoration(
-        color: AppTheme.surfaceColor,
+        color: Theme.of(context).colorScheme.surface,
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: Colors.white.withOpacity(0.05)),
+        border: Border.all(color: Theme.of(context).textTheme.bodyLarge?.color?.withOpacity(0.05) ?? Colors.black12),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -115,18 +114,18 @@ class ProjectsSection extends StatelessWidget {
                     width: 40,
                     height: 40,
                     fit: BoxFit.cover,
-                    errorBuilder: (context, error, stackTrace) => const Icon(
+                    errorBuilder: (context, error, stackTrace) => Icon(
                       Icons.folder_open,
                       size: 40,
-                      color: AppTheme.primaryColor,
+                      color: Theme.of(context).primaryColor,
                     ),
                   ),
                 )
               else
-                const Icon(Icons.folder_open, size: 40, color: AppTheme.primaryColor),
+                Icon(Icons.folder_open, size: 40, color: Theme.of(context).primaryColor),
               if (link != null)
                 IconButton(
-                  icon: const Icon(Icons.open_in_new, color: AppTheme.textSecondary),
+                  icon: Icon(Icons.open_in_new, color: Theme.of(context).textTheme.bodyMedium?.color),
                   onPressed: () async {
                     final url = Uri.parse(link);
                     if (await canLaunchUrl(url)) {
@@ -171,7 +170,7 @@ class ProjectsSection extends StatelessWidget {
               return Text(
                 tech,
                 style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                      color: AppTheme.textSecondary,
+                      color: Theme.of(context).textTheme.bodyMedium?.color,
                       fontFamily: 'monospace',
                     ),
               );

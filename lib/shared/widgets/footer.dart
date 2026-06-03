@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../../core/theme/app_theme.dart';
 
 class Footer extends StatelessWidget {
   const Footer({super.key});
@@ -9,17 +8,17 @@ class Footer extends StatelessWidget {
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.all(24),
-      color: AppTheme.surfaceColor,
+      color: Theme.of(context).colorScheme.surface,
       child: Column(
         children: [
-          const Text(
+          Text(
             'Designed & Built by Nazmul Hossain Bhuiyan',
-            style: TextStyle(color: AppTheme.textSecondary),
+            style: TextStyle(color: Theme.of(context).textTheme.bodyMedium?.color),
           ),
           const SizedBox(height: 8),
           Text(
             '© ${DateTime.now().year} All Rights Reserved.',
-            style: const TextStyle(color: AppTheme.textSecondary, fontSize: 12),
+            style: TextStyle(color: Theme.of(context).textTheme.bodyMedium?.color, fontSize: 12),
           ),
         ],
       ),

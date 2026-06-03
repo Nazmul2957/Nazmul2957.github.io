@@ -1,29 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../../core/theme/app_theme.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../core/providers/theme_provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
-class NavBar extends StatelessWidget {
+class NavBar extends ConsumerWidget {
   final Function(int) onMenuTap;
 
   const NavBar({super.key, required this.onMenuTap});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final isDarkMode = ref.watch(themeProvider.notifier).isDarkMode;
+
     return ResponsiveBuilder(
       builder: (context, sizingInformation) {
         bool isMobile = sizingInformation.deviceScreenType == DeviceScreenType.mobile;
 
         return Container(
           padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-          color: AppTheme.backgroundColor.withOpacity(0.9),
+          color: Theme.of(context).scaffoldBackgroundColor.withOpacity(0.9),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
                 '<Nazmul />',
                 style: GoogleFonts.inter(
-                  color: AppTheme.primaryColor,
+                  color: Theme.of(context).primaryColor,
                   fontWeight: FontWeight.bold,
                   fontSize: 24,
                 ),
@@ -37,6 +40,12 @@ class NavBar extends StatelessWidget {
                     _NavBarItem(title: 'Projects', onTap: () => onMenuTap(3)),
                     _NavBarItem(title: 'About', onTap: () => onMenuTap(4)),
                     const SizedBox(width: 16),
+                    IconButton(
+                      icon: Icon(isDarkMode ? Icons.light_mode : Icons.dark_mode),
+                      color: Theme.of(context).textTheme.bodyLarge?.color,
+                      onPressed: () => ref.read(themeProvider.notifier).toggleTheme(),
+                    ),
+                    const SizedBox(width: 16),
                     ElevatedButton(
                       onPressed: () => onMenuTap(5),
                       child: const Text('Contact Me'),
@@ -44,11 +53,20 @@ class NavBar extends StatelessWidget {
                   ],
                 )
               else
-                IconButton(
-                  icon: const Icon(Icons.menu, color: AppTheme.textPrimary),
-                  onPressed: () {
-                    Scaffold.of(context).openEndDrawer();
-                  },
+                Row(
+                  children: [
+                    IconButton(
+                      icon: Icon(isDarkMode ? Icons.light_mode : Icons.dark_mode),
+                      color: Theme.of(context).textTheme.bodyLarge?.color,
+                      onPressed: () => ref.read(themeProvider.notifier).toggleTheme(),
+                    ),
+                    IconButton(
+                      icon: Icon(Icons.menu, color: Theme.of(context).textTheme.bodyLarge?.color),
+                      onPressed: () {
+                        Scaffold.of(context).openEndDrawer();
+                      },
+                    ),
+                  ],
                 ),
             ],
           ),
@@ -76,7 +94,7 @@ class _NavBarItem extends StatelessWidget {
         child: Text(
           title,
           style: GoogleFonts.inter(
-            color: AppTheme.textPrimary,
+            color: Theme.of(context).textTheme.bodyLarge?.color,
             fontWeight: FontWeight.w500,
             fontSize: 16,
           ),
@@ -85,3 +103,4 @@ class _NavBarItem extends StatelessWidget {
     );
   }
 }
+
