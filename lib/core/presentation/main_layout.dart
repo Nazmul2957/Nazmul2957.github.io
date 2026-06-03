@@ -8,6 +8,8 @@ import '../../features/projects/presentation/projects_section.dart';
 import '../../features/about/presentation/about_section.dart';
 import '../../features/contact/presentation/contact_section.dart';
 
+import '../../shared/widgets/particle_background.dart';
+
 class MainLayout extends StatefulWidget {
   const MainLayout({super.key});
 
@@ -50,30 +52,32 @@ class _MainLayoutState extends State<MainLayout> {
           ],
         ),
       ),
-      body: Stack(
-        children: [
-          SingleChildScrollView(
-            controller: _scrollController,
-            child: Column(
-              children: [
-                const SizedBox(height: 80), // Offset for fixed navbar
-                HomeSection(key: _sectionKeys[0]),
-                SkillsSection(key: _sectionKeys[1]),
-                ExperienceSection(key: _sectionKeys[2]),
-                ProjectsSection(key: _sectionKeys[3]),
-                AboutSection(key: _sectionKeys[4]),
-                ContactSection(key: _sectionKeys[5]),
-                const Footer(),
-              ],
+      body: ParticleBackground(
+        child: Stack(
+          children: [
+            SingleChildScrollView(
+              controller: _scrollController,
+              child: Column(
+                children: [
+                  const SizedBox(height: 80), // Offset for fixed navbar
+                  HomeSection(key: _sectionKeys[0]),
+                  SkillsSection(key: _sectionKeys[1]),
+                  ExperienceSection(key: _sectionKeys[2]),
+                  ProjectsSection(key: _sectionKeys[3]),
+                  AboutSection(key: _sectionKeys[4]),
+                  ContactSection(key: _sectionKeys[5]),
+                  const Footer(),
+                ],
+              ),
             ),
-          ),
-          Positioned(
-            top: 0,
-            left: 0,
-            right: 0,
-            child: NavBar(onMenuTap: _scrollToSection),
-          ),
-        ],
+            Positioned(
+              top: 0,
+              left: 0,
+              right: 0,
+              child: NavBar(onMenuTap: _scrollToSection),
+            ),
+          ],
+        ),
       ),
     );
   }
