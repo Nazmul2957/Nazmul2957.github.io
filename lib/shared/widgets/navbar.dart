@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/providers/theme_provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class NavBar extends ConsumerWidget {
   final Function(int) onMenuTap;
@@ -47,7 +48,12 @@ class NavBar extends ConsumerWidget {
                     ),
                     const SizedBox(width: 16),
                     ElevatedButton(
-                      onPressed: () => onMenuTap(5),
+                      onPressed: () async {
+                        final url = Uri.parse('mailto:csenazmul.sbpgc@gmail.com');
+                        if (await canLaunchUrl(url)) {
+                          await launchUrl(url);
+                        }
+                      },
                       child: const Text('Contact Me'),
                     ),
                   ],

@@ -61,6 +61,18 @@ class ContactSection extends StatelessWidget {
                   ),
                   _buildContactItem(
                     context,
+                    icon: Icons.email,
+                    title: 'Email',
+                    content: 'csenazmul.sbpgc@gmail.com',
+                    onTap: () async {
+                      final url = Uri.parse('mailto:csenazmul.sbpgc@gmail.com');
+                      if (await canLaunchUrl(url)) {
+                        await launchUrl(url);
+                      }
+                    },
+                  ),
+                  _buildContactItem(
+                    context,
                     icon: Icons.link,
                     title: 'LinkedIn',
                     content: 'linkedin.com/in/nazmul-hossain1',
