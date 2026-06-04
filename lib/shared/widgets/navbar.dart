@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/providers/theme_provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:url_launcher/url_launcher.dart';
+import '../utils/download_cv.dart';
 
 class NavBar extends ConsumerWidget {
   final Function(int) onMenuTap;
@@ -45,6 +46,11 @@ class NavBar extends ConsumerWidget {
                       icon: Icon(isDarkMode ? Icons.light_mode : Icons.dark_mode),
                       color: Theme.of(context).textTheme.bodyLarge?.color,
                       onPressed: () => ref.read(themeProvider.notifier).toggleTheme(),
+                    ),
+                    const SizedBox(width: 16),
+                    OutlinedButton(
+                      onPressed: () => downloadCV(),
+                      child: const Text('Download CV'),
                     ),
                     const SizedBox(width: 16),
                     ElevatedButton(

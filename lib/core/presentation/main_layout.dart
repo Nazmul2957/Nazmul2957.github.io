@@ -9,6 +9,7 @@ import '../../features/about/presentation/about_section.dart';
 import '../../features/contact/presentation/contact_section.dart';
 
 import '../../shared/widgets/particle_background.dart';
+import '../../shared/utils/download_cv.dart';
 
 class MainLayout extends StatefulWidget {
   const MainLayout({super.key});
@@ -49,6 +50,15 @@ class _MainLayoutState extends State<MainLayout> {
             _buildDrawerItem('Projects', 3),
             _buildDrawerItem('About', 4),
             _buildDrawerItem('Contact', 5),
+            const Divider(),
+            ListTile(
+              leading: const Icon(Icons.download),
+              title: const Text('Download CV'),
+              onTap: () {
+                Navigator.pop(context);
+                downloadCV();
+              },
+            ),
           ],
         ),
       ),
